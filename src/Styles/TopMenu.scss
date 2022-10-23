@@ -1,0 +1,21 @@
+.top-menu__ {
+  &wrapper {
+    display: flex;
+    border-bottom: 1px solid #414144;
+  }
+
+  &element {
+    display: inline-flex;
+    padding: 14px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #A1A1AA;
+
+    &.active {
+      color: #FFFFFF;
+      border-bottom: 2px solid #FFFFFF;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.left-menu__ {
+  &wrapper {
+    height: 100%;
+    border-right: 1px solid #414144;
+  }
+
+  &header {
+    border-bottom: 1px solid #414144;
+    padding: 8px 20px 8px 20px;
+    height: 44px;
+
+    >div {
+      float: left;
+
+      .title {
+        margin: 0;
+        padding: 0;
+        color: #A1A1AA;
+        text-align: left;
+      }
+
+      .subtitle {
+        margin: 0;
+        padding: 0;
+        color: #A1A1AA;
+        font-size: 10px;
+        line-height: 12px;
+        text-align: left;
+      }
+
+
+    }
+
+    >img {
+      position: relative;
+      left: 60px;
+    }
+
+  }
+
+  &item {
+
+    >img {
+      padding: 8px 22px 8px 16px;
+      vertical-align: middle;
+    }
+
+    >span {
+      vertical-align: -1px;
+    }
+
+    &.active {
+      background-color: #A1A1AA;
+    }
+  }
+}

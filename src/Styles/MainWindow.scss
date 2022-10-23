@@ -1,0 +1,24 @@
+.main-window__ {
+  &wrapper {
+    width: 100%;
+  }
+
+  &titles {
+    border-bottom: 1px solid #414144;
+    height: 44px;
+
+    >a {
+      display: inline-flex;
+      font-size: 18px;
+      line-height: 21px;
+      color: #FFFFFF;
+      padding: 11px 15px;
+      text-decoration: none;
+      border-right: 1px solid #414144;
+    }
+  }
+
+  &body {
+    height: 100%;
+  }
+}
