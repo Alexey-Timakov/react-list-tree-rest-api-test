@@ -19,6 +19,24 @@
   }
 
   &body {
+    background-color: #202124;
     height: 100%;
+
+    .row__title-wrapper {
+      display: grid;
+      grid-template-columns: 110px 8fr 2fr 2fr 2fr 2fr;
+      border-bottom: 1px solid #414144;
+      align-items: center;
+    }
+
+    .row__title {
+      padding: 12px 21px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.1px;
+      color: #A1A1AA;
+      word-break: break-word;
+    }
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { menuItems } from './MenItems';
-import iconMenuElement from "../Icons/icon-menu-element.svg";
+import iconMenuElement from "../Icons/icon-left-menu-element.svg";
 import iconArrowDown from "../Icons/icon-arrow-down.svg";
 
 import "../Styles/LeftMenu.scss";

@@ -1,0 +1,86 @@
+.row__ {
+  &wrapper {
+    display: grid;
+    grid-template-columns: 110px 8fr 2fr 2fr 2fr 2fr;
+    border-bottom: 1px solid #414144;
+    align-items: center;
+  }
+
+  &column {
+    padding: 12px 21px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+
+    &_level {
+      position: relative;
+
+      .level-one {}
+
+      .level-two {
+        position: relative;
+        left: 20px;
+
+        &::before {
+          position: absolute;
+          left: -12px;
+          top: -32px;
+          content: "";
+          width: 12px;
+          height: 40px;
+          border-left: 1px solid #C6C6C6;
+          border-bottom: 1px solid #C6C6C6;
+        }
+      }
+
+      .level-three {
+        position: relative;
+        left: 40px;
+
+        &::before {
+          position: absolute;
+          left: -12px;
+          top: -38px;
+          content: "";
+          width: 12px;
+          height: 44px;
+          border-left: 1px solid #C6C6C6;
+          border-bottom: 1px solid #C6C6C6;
+        }
+      }
+    }
+
+    >input {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.1px;
+      color: #FFFFFF;
+      background-color: transparent;
+      padding: 10px;
+      margin: 0;
+      border: none;
+      width: 100%;
+
+      &:enabled {
+        color: #71717A;
+        border: 1px solid #414144;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  &control-panel {
+    display: grid;
+    position: absolute;
+    left: 15px;
+    top: 6px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 7px;
+    padding: 6px;
+    background-color: #414144;
+    border-radius: 6px;
+  }
+}
