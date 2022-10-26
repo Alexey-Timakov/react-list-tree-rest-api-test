@@ -5,11 +5,9 @@ import iconNewElement1 from "../Icons/Icon-new-element-1.svg";
 import iconNewElement2 from "../Icons/Icon-new-element-2.svg";
 import iconNewElement3 from "../Icons/Icon-new-element-3.svg";
 import iconRemoveElement from "../Icons/icon-trash.svg";
-
-import { addNewRow, deleteRow, fetchCreateRow, fetchDeleteRow, fetchUpdateRow, tempId } from '../Reducers/rowReducer';
-
-import "../Styles/Row.scss";
 import { INewRowRequest, IUpdateRowData, IUpdateRowRequest } from '../Interfaces/IRow';
+import { addNewRow, deleteRow, fetchCreateRow, fetchDeleteRow, fetchUpdateRow, tempId } from '../Reducers/rowReducer';
+import "../Styles/Row.scss";
 
 export default function RowElement({ row, parentId, level }: Row) {
   const dispatch = useAppDispatch();
@@ -46,7 +44,7 @@ export default function RowElement({ row, parentId, level }: Row) {
       salary: salary,
       supportCosts: 0
     };
-    console.log("send new row");
+
     dispatch(fetchCreateRow(newRowObject))
   };
 
@@ -67,12 +65,12 @@ export default function RowElement({ row, parentId, level }: Row) {
       rowId: row.id,
       data: updatedRow
     };
-    console.log(updatedRowData);
+
     dispatch(fetchUpdateRow(updatedRowData));
   };
 
   const sendRowToServer = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && colName.length > 0) {
       disableInputs(true);
 
       if (row.id === tempId) sendNewRowtoServer();

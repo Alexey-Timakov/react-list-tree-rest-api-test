@@ -11,9 +11,10 @@ const initialState: IStore = {
   error: null,
 };
 
-//id для вновь сгенерированной строки, чтобы потом можно было ее найти в сторе.
+// id для вновь созданной пользователем строки, чтобы потом можно было ее найти в сторе:
 export const tempId = 1.5;
 
+// функции для рекурсивного перебора массивов строк:
 function addNewRowToState(arr: IRow[], newElement: IRow, parentId: number): IRow[] {
   return arr.map((item: any) => {
     if (item.id === parentId) {
@@ -47,25 +48,31 @@ export const rowSlice = createSlice({
   name: "rows",
   initialState,
   reducers: {
+    // Добавление новой строки пользователем:
     addNewRow: (state, action: PayloadAction<{ parentId: number | null }>) => {
       const newRow = { ...new NewRow(action.payload.parentId) };
       newRow.id = tempId;
 
       if (action.payload.parentId === null) state.elements.push(newRow);
+
       else state.elements = addNewRowToState(state.elements, newRow, action.payload.parentId)
     },
 
+    // Удаление строки локально:
     deleteRow: (state, action: PayloadAction<{ rowId: number }>) => {
       state.elements = deleteRowFromState(state.elements, action.payload.rowId)
     }
   },
 
+  // Здесь не стал обрабатывать случаи, когда прилетает ошибка с сервера.
   extraReducers(builder) {
     builder
+      // Загрузка списка при начальной инициализации:
       .addCase(fetchInitialRows.fulfilled, (state, action) => {
         state.status = "completed";
         state.elements = action.payload;
       })
+      // Создание строки после получения ответа сервера о создании строки:
       .addCase(fetchCreateRow.fulfilled, (state, action) => {
         state.status = "completed";
         const updatedParents = action.payload.changed;
@@ -77,6 +84,7 @@ export const rowSlice = createSlice({
           state.elements = updateRowInState(state.elements, elem, elem.id);
         }
       })
+      // Обновление строк после ответа сервера об удалении строки:
       .addCase(fetchDeleteRow.fulfilled, (state, action) => {
         state.status = "completed";
         const updatedParents = action.payload.changed;
@@ -85,6 +93,7 @@ export const rowSlice = createSlice({
           state.elements = updateRowInState(state.elements, elem, elem.id);
         }
       })
+      // Обновление строк после ответа сервера об обновлении строки:
       .addCase(fetchUpdateRow.fulfilled, (state, action) => {
         state.status = "completed";
         const updatedElement = action.payload.current;

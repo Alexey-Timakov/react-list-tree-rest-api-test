@@ -7,6 +7,7 @@ import "../Styles/MainWindow.scss";
 
 export default function MainWindow() {
   const dispatch = useAppDispatch();
+
   const status = useAppSelector(state => state.status);
   const rows = useAppSelector(state => state.elements);
 
