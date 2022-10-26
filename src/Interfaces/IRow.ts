@@ -31,7 +31,25 @@ export interface INewRowRequest {
   supportCosts: number;
 }
 
-export interface IRowResponse {
+export interface IUpdateRowRequest {
+  equipmentCosts: number;
+  estimatedProfit: number;
+  machineOperatorSalary: number;
+  mainCosts: number;
+  materials: number;
+  mimExploitation: number;
+  overheads: number;
+  rowName: string;
+  salary: number;
+  supportCosts: number;
+}
+
+export interface IUpdateRowData {
+  rowId: number;
+  data: IUpdateRowRequest;
+}
+
+export interface IRowRes {
   id: number;
   rowName: string;
   total: number;
@@ -47,26 +65,13 @@ export interface IRowResponse {
 }
 
 export interface INewRowResponse {
-  current: IRowResponse;
-  changed: IRowResponse[];
-}
-
-export interface IUpdateRowRequest {
-  equipmentCosts: number;
-  estimatedProfit: number;
-  machineOperatorSalary: number;
-  mainCosts: number;
-  materials: number;
-  mimExploitation: number;
-  overheads: number;
-  rowName: string;
-  salary: number;
-  supportCosts: number;
+  current: IRowRes;
+  changed: IRowRes[];
 }
 
 export interface IUpdateRowResponse {
-  current: IRowResponse;
-  changed: IRowResponse[];
+  current: IRowRes;
+  changed: IRowRes[];
 }
 
 export class NewRow {
